@@ -1,0 +1,157 @@
+@use '@styles/main' as *;
+
+.wrapper {
+    background-color: #000;
+    color: #fff;
+    border-radius: 6px;
+    padding: 24px;
+    padding-top: 0px;
+    height: 60vh;
+    position: relative;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 40px;
+
+    strong {
+        color: #00c800;
+    }
+}
+
+.description {
+    display: inline-block;
+}
+
+.scrollContainer {
+    overflow-y: auto;
+    position: relative;
+    padding-top: 20px;
+    width: 600px;
+    max-width: 100%;
+    margin: 0 auto;
+
+    padding-right: 20px;
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgb(12, 12, 12);
+    }
+    &::-webkit-scrollbar-track {
+        background-color: #000;
+    }
+    &::-webkit-scrollbar-corner {
+        background-color: #000;
+    }
+    &::-webkit-scrollbar {
+        width: 0.5rem;
+        height: 0.5rem;
+    }
+
+    -ms-overflow-style: auto;
+    scrollbar-color: #131313 #000;
+    scrollbar-width: thin;
+}
+
+.footer {
+    width: 100%;
+    padding-top: 20px;
+}
+
+.inputWrapper {
+    position: relative;
+    width: 600px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.questionsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 10px 0;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.searchInput {
+    background-color: #1e1e1e;
+    border-radius: 4px;
+    appearance: none;
+    border: 2px solid transparent;
+    max-width: 100%;
+    width: 600px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    outline: none;
+    color: #fff;
+    font-size: 15px;
+    padding: 6px 8px;
+
+    &:focus {
+        border-color: #00c800;
+    }
+}
+
+.askQuestionButton {
+    @include playFocus(2);
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    line-height: 0;
+}
+
+.textBubbleWrapper {
+    padding: 8px 15px 8px 13px;
+    border-radius: 10px;
+    font-size: 16px;
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+.RAGBotBubbleWrapper {
+    background-color: transparent;
+}
+
+.userBubbleWrapper {
+    background-color: #272727;
+    max-width: 60%;
+    margin-left: auto;
+}
+.nameHeader {
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 5px;
+}
+.sourceContent {
+    padding-left: 40px;
+    white-space: pre-wrap;
+}
+
+.RAGBotNameCircle {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    border: 1px solid #6d6d6d;
+}
+
+.activeRAGBotNameCircle {
+    background-color: #00c800;
+    filter: blur(2px);
+    border-color: transparent;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

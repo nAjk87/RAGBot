@@ -1,0 +1,13 @@
+[project]
+name = "RAGBot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0",
+    "openai>=1.46.1",
+    "pandas>=2.2.2",
+    "scikit-learn>=1.5.2",
+    "uvicorn>=0.30.6",
+]
