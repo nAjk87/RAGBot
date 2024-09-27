@@ -1,6 +1,6 @@
 <h1> RAGBot README för OS X</h1>
 
-<h2>För att köra backend
+<h2>För att köra backend</h2>
 
 brew install uv
 
