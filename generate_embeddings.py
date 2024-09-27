@@ -27,7 +27,7 @@ def get_title_data(title):
       freetext = title['freeText']
    ))
 
-def get_embedding(text, model="text-embedding-3-small"):
+def get_embedding(text, model="text-embedding-3-large"):
    global current_embedding
    print(f"Getting embedding {current_embedding} of {len(titles)}")
    current_embedding = current_embedding + 1

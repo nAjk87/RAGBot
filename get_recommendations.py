@@ -9,7 +9,7 @@ client = OpenAI()
 data = pd.read_json("data/embeddings.json")
 
 
-def get_question_embedding(question, model="text-embedding-3-small"):
+def get_question_embedding(question, model="text-embedding-3-large"):
     return client.embeddings.create(input=[question], model=model).data[0].embedding
 
 
