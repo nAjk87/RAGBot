@@ -1,7 +1,6 @@
-RAGBot README
+<h1> RAGBot README för OS X</h1>
 
-
-För backend
+<h2>För att köra backend
 
 brew install uv
 
@@ -9,16 +8,16 @@ uv sync
 
 uv run uvicorn main:app
 
+<h2>För att köra frontend</h2>
 
-För att generera nya embeddings
-
-uv run generate_embeddings.py
-
-
-För att köra frontend
+Stå i chat-ui/
 
 brew install node
 
 npm install
 
 npm run dev
+
+<h2>För att generera nya embeddings</h2>
+
+uv run generate_embeddings.py
