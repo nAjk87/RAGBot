@@ -21,3 +21,7 @@ npm run dev
 <h2>För att generera nya embeddings</h2>
 
 uv run generate_embeddings.py
+
+<h2>För att få ett fungerand flöde</h2>
+
+Sätta miljövariabeln OPENAI_API_KEY som man får av Niklas
