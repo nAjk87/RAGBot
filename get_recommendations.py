@@ -6,10 +6,10 @@ import pprint
 client = OpenAI()
 
 
-data = pd.read_json("data/embeddings_take_2.json")
+data = pd.read_json("data/embeddings.json")
 
 
-def get_question_embedding(question, model="text-embedding-3-large"):
+def get_question_embedding(question, model="text-embedding-3-small"):
     return client.embeddings.create(input=[question], model=model).data[0].embedding
 
 

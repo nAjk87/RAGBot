@@ -1,3 +1,5 @@
 __pycache__/
+dist/
 data/
 .DS_Store
+RAGBot.egg-info/
