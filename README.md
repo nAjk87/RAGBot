@@ -20,8 +20,8 @@ npm run dev
 
 <h2>För att generera nya embeddings</h2>
 
-uv run generate_embeddings.py
-För att göra detta behöver du en json fil i mappen data samt ändra i generate_embeddings.py för att peka ut rätt fil.
+<p>uv run generate_embeddings.py</p>
+<p>För att göra detta behöver du en json fil i mappen data samt ändra i generate_embeddings.py för att peka ut rätt fil.</p>
 
 Du behöver även ändra i vilka fält som skall läsas in och dess innebörd i generate_embeddings.py
 
