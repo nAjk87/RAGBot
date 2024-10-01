@@ -20,9 +20,6 @@ class RecommendationRequest(BaseModel):
     question: str
     thread_id: Optional[str] = None
 
-
-data = pd.read_json("data/embeddings.json")
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

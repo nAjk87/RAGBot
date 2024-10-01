@@ -21,7 +21,13 @@ npm run dev
 <h2>För att generera nya embeddings</h2>
 
 uv run generate_embeddings.py
+För att göra detta behöver du en json fil i mappen data samt ändra i generate_embeddings.py för att peka ut rätt fil.
 
-<h2>För att få ett fungerand flöde</h2>
+Du behöver även ändra i vilka fält som skall läsas in och dess innebörd i generate_embeddings.py
 
-Sätta miljövariabeln OPENAI_API_KEY som man får av Niklas
+I filen get_recommendations.py måste du också specificera vilken data du vill få tillbaka när boten använder sig av vår rekommendationsdatabas.
+
+
+<h2>För att få ett fungerande flöde</h2>
+
+Sätta miljövariabeln OPENAI_API_KEY samt filen med alla embeddings, dessa får man av Niklas.

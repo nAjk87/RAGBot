@@ -93,17 +93,6 @@
     }
 }
 
-.askQuestionButton {
-    @include playFocus(2);
-    background-color: transparent;
-    border: none;
-    position: absolute;
-    top: 50%;
-    right: 8px;
-    transform: translateY(-50%);
-    line-height: 0;
-}
-
 .textBubbleWrapper {
     padding: 8px 15px 8px 13px;
     border-radius: 10px;
