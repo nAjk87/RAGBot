@@ -3,28 +3,23 @@ import pandas as pd
 from sklearn import metrics
 import pprint
 client = OpenAI()
-input_datapath = "data/titles.json"  # CHANGE THIS TO USE OTHER DATA TO BUILD NEW EMBEDDINGS
+input_datapath = "data/recept.json"  # CHANGE THIS TO USE OTHER DATA TO BUILD NEW EMBEDDINGS
 inputData = pd.read_json(input_datapath)
 import pprint
 
 current_embedding = 1
 
-def get_input_data(inputData):
+def get_input_data(recipe):
    return """
-      This is a description of a tv show that we want to recommend to users with questions such as, "What should I watch?".
-      I want to ask about drama films or such and get examples.
+      This is a description of a food recipe, to recommend to users with questions such as "what should i cook tonight" or "I have brocolli at home can you give me some good recipes with brocolli in them?" or "I really like salmon, got any good salmon recipes?".
    """ +pprint.pformat(dict(
-      name= inputData['name'],
-      tags= [x["name"]  for x in inputData['tags']],
-      search_tags = inputData['searchTags'],
-      additional_search_tags = inputData['prioritizedSearchTags'],
-      production_counties = [x['name'] for x in inputData['countriesOfOriginWithNames']],
-      main_languages = [x['name'] for x in inputData['mainLanguages']],
-      type_of_programme = inputData['titleType'],
-      languages = inputData['languages'],
-      longDescription = inputData['longDescription'],
-      shortDescription = inputData['shortDescription'],
-      freetext = inputData['freeText']
+      titel= recipe['titel'],
+      ingredienser= recipe['ingredienser'],
+      tillagning = recipe['tillagning'],
+      portioner = recipe['portioner'],
+      svarighetsgrad = recipe['svårighetsgrad'],
+      tillagningstid = recipe['tillagningstid'],
+      sasong = recipe['säsong'],
    ))
 
 def get_embedding(text, model="text-embedding-3-large"):
