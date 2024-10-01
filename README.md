@@ -3,9 +3,7 @@
 <h2>För att köra backend</h2>
 <p> Stå i projekets root mapp</p>
 * brew install uv
-
 * uv sync
-
 * uv run uvicorn main:app
 
 <h2>För att köra frontend</h2>
@@ -13,9 +11,7 @@
 <p>Stå i chat-ui/</p>
 
 * brew install node
-
 * npm install
-
 * npm run dev
 
 <h2>För att generera nya embeddings</h2>
