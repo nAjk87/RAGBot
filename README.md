@@ -2,6 +2,7 @@
 
 <h2>För att köra backend</h2>
 <p> Stå i projekets root mapp</p>
+
 * brew install uv
 * uv sync
 * uv run uvicorn main:app
