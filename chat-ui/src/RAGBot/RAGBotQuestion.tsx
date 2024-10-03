@@ -1,8 +1,21 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "./RAGBot.module.css";
 import clsx from "classnames";
-import React from "react";
-function useQuestion(setThreadId, setIsLoading, threadId) {
+
+type Props = {
+  setIsLoading: (isLoading: boolean) => void;
+  question: string;
+  setThreadId: (threadId: string | null) => void;
+  threadId: string | null;
+  isActiveQuestion: boolean;
+  scrollToBottom: () => void;
+};
+
+function useQuestion(
+  setThreadId: Props["setThreadId"],
+  setIsLoading: Props["setIsLoading"],
+  threadId: Props["threadId"],
+) {
   const [text, setText] = useState("");
 
   const loadQuestion = async (text: string) => {
@@ -40,73 +53,62 @@ function useQuestion(setThreadId, setIsLoading, threadId) {
 
   return { text, loadQuestion };
 }
-const RAGBotQuestion = React.memo(
-  ({
-    setIsLoading,
-    question,
+
+const RAGBotQuestion = ({
+  setIsLoading,
+  question,
+  setThreadId,
+  threadId,
+  isActiveQuestion,
+  scrollToBottom,
+}: Props) => {
+  const hasRendered = useRef<Boolean>(false);
+  const { text: source, loadQuestion } = useQuestion(
     setThreadId,
+    setIsLoading,
     threadId,
-    isActiveQuestion,
-    scrollToBottom,
-  }) => {
-    const hasRendered = useRef<Boolean>(false);
-    const { text: source, loadQuestion } = useQuestion(
-      setThreadId,
-      setIsLoading,
-      threadId
-    );
+  );
 
-    useEffect(() => {
-      if (question && !hasRendered.current) {
-        loadQuestion(question);
-        hasRendered.current = true;
-      }
-    }, [question]);
+  useEffect(() => {
+    if (question && !hasRendered.current) {
+      loadQuestion(question);
+      hasRendered.current = true;
+    }
+  }, [question]);
 
-    useEffect(() => {
-      scrollToBottom();
-    }, [question, source]);
+  useEffect(() => {
+    scrollToBottom();
+  }, [question, source]);
 
-    return (
-      <>
-        <div
-          className={clsx([styles.textBubbleWrapper, styles.userBubbleWrapper])}
-        >
-          {question}
-        </div>
-        <div
-          className={clsx([
-            styles.textBubbleWrapper,
-            styles.RAGBotBubbleWrapper,
-          ])}
-        >
-          <header className={styles.nameHeader}>
+  return (
+    <>
+      <div
+        className={clsx([styles.textBubbleWrapper, styles.userBubbleWrapper])}
+      >
+        {question}
+      </div>
+      <div
+        className={clsx([styles.textBubbleWrapper, styles.RAGBotBubbleWrapper])}
+      >
+        <header className={styles.nameHeader}>
+          <div
+            className={clsx(styles.RAGBotNameCircle, {
+              [styles.activeRAGBotNameCircle]: isActiveQuestion,
+            })}
+          />
+          <span>RagBot</span>
+        </header>
+        <div className={styles.sourceContent}>
+          <div style={{ marginBottom: 20 }}>
             <div
-              className={clsx(styles.RAGBotNameCircle, {
-                [styles.activeRAGBotNameCircle]: isActiveQuestion,
-              })}
+              className={styles.description}
+              dangerouslySetInnerHTML={{ __html: source }}
             />
-            <span>RagBot</span>
-          </header>
-          <div className={styles.sourceContent}>
-            <div style={{ marginBottom: 20 }}>
-              <div
-                className={styles.description}
-                dangerouslySetInnerHTML={{ __html: source }}
-              />
-            </div>
           </div>
         </div>
-      </>
-    );
-  },
-  () => true
-);
-const hashCode = function (s) {
-  return s.split("").reduce(function (a, b) {
-    a = (a << 5) - a + b.charCodeAt(0);
-    return a & a;
-  }, 0);
+      </div>
+    </>
+  );
 };
 
 export default RAGBotQuestion;
