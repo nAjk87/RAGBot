@@ -62,7 +62,7 @@ const RAGBotQuestion = ({
   isActiveQuestion,
   scrollToBottom,
 }: Props) => {
-  const hasRendered = useRef<Boolean>(false);
+  const hasRendered = useRef<boolean>(false);
   const { text: source, loadQuestion } = useQuestion(
     setThreadId,
     setIsLoading,
