@@ -6,7 +6,7 @@ import pprint
 client = OpenAI()
 
 
-data = pd.read_json("data/embeddings.json")
+data = pd.read_json("data/new_embeddings.json")
 
 
 def get_question_embedding(question, model="text-embedding-3-large"):
@@ -22,4 +22,4 @@ def get_recommendations(question: str):
     )
 
     result = sorted(similarity["item"], key=lambda x: x[1], reverse=True)
-    return [(i[0]["name"], i[0]["longDescription"]) for i in result[:10]]
+    return [(i[0]["section_title"], i[0]["content"]) for i in result[:10]]

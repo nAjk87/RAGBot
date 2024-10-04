@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "./RAGBot.module.css";
 import clsx from "classnames";
+import helena from "../assets/helena.jpg";
 
 type Props = {
   setIsLoading: (isLoading: boolean) => void;
@@ -91,12 +92,10 @@ const RAGBotQuestion = ({
         className={clsx([styles.textBubbleWrapper, styles.RAGBotBubbleWrapper])}
       >
         <header className={styles.nameHeader}>
-          <div
-            className={clsx(styles.RAGBotNameCircle, {
-              [styles.activeRAGBotNameCircle]: isActiveQuestion,
-            })}
-          />
-          <span>RagBot</span>
+          <div className={clsx(styles.helena)}>
+            <img width="20px" height="20px" src={helena} />
+          </div>
+          <span>HelenaBot</span>
         </header>
         <div className={styles.sourceContent}>
           <div style={{ marginBottom: 20 }}>

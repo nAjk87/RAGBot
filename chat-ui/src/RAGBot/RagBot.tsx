@@ -57,7 +57,7 @@ const RAGBot = () => {
                 handleAskQuestion();
               }
             }}
-            placeholder="Fråga RAGBot"
+            placeholder="Fråga HelenaBot"
             type="text"
             id="ragbot-question"
             value={questionValue}

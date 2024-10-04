@@ -11,4 +11,5 @@ dependencies = [
     "pandas>=2.2.2",
     "scikit-learn>=1.5.2",
     "uvicorn>=0.30.6",
+    "python-docx"
 ]

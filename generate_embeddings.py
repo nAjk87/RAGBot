@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn import metrics
 import pprint
 client = OpenAI()
-input_datapath = "data/titles.json"  # CHANGE THIS TO USE OTHER DATA TO BUILD NEW EMBEDDINGS
+input_datapath = "output-formatted.json"  # CHANGE THIS TO USE OTHER DATA TO BUILD NEW EMBEDDINGS
 inputData = pd.read_json(input_datapath)
 import pprint
 
@@ -11,20 +11,10 @@ current_embedding = 1
 
 def get_input_data(inputData):
    return """
-      This is a description of a tv show that we want to recommend to users with questions such as, "What should I watch?".
-      I want to ask about drama films or such and get examples.
+      This is different sections from the employee handbook. Answers to questions should be searched for in the paragraphs, and you should reference the section title.
    """ +pprint.pformat(dict(
-      name= inputData['name'],
-      tags= [x["name"]  for x in inputData['tags']],
-      search_tags = inputData['searchTags'],
-      additional_search_tags = inputData['prioritizedSearchTags'],
-      production_counties = [x['name'] for x in inputData['countriesOfOriginWithNames']],
-      main_languages = [x['name'] for x in inputData['mainLanguages']],
-      type_of_programme = inputData['titleType'],
-      languages = inputData['languages'],
-      longDescription = inputData['longDescription'],
-      shortDescription = inputData['shortDescription'],
-      freetext = inputData['freeText']
+      section_title= inputData['section_title'],
+      paragraphs= [x["paragraph"]  for x in inputData['content']],
    ))
 
 def get_embedding(text, model="text-embedding-3-large"):

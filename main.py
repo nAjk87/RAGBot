@@ -37,7 +37,7 @@ def read_root():
 async def streaming(request: RecommendationRequest) -> StreamingResponse:
     try:
         assistant = await client.beta.assistants.retrieve(
-            assistant_id="asst_o4RjLqyMccAmdEPlZoQti820"
+            assistant_id="asst_LvxOvSHyfXkThe2TgzPIKmK1"
         )
 
         thread = await (
